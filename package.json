@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/Jameskmonger/tidyfolders/issues"
   },
-  "homepage": "https://github.com/Jameskmonger/tidyfolders"
+  "homepage": "https://github.com/Jameskmonger/tidyfolders",
+  "preferGlobal": true
 }
