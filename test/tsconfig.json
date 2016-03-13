@@ -19,9 +19,7 @@
         "**/*.tsx",
         "!node_modules/**"
     ],
-    "files": [
-        "main.test.ts"
-    ],
+    "files": [],
     "atom": {
         "rewriteTsconfig": true
     }
