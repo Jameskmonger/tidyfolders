@@ -19,7 +19,9 @@
         "**/*.tsx",
         "!node_modules/**"
     ],
-    "files": [],
+    "files": [
+        "simple-organizer.test.ts"
+    ],
     "atom": {
         "rewriteTsconfig": true
     }
