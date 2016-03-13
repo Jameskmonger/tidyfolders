@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-all": "tsc -p ./src && tsc -p ./test",
+    "run-test": "node ./node_modules/.bin/tape test/**/*.test.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "symlink": "node ./scripts/link.js"
   },
