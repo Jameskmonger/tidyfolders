@@ -17,5 +17,8 @@
     "url": "https://github.com/Jameskmonger/tidyfolders/issues"
   },
   "homepage": "https://github.com/Jameskmonger/tidyfolders",
-  "preferGlobal": true
+  "preferGlobal": true,
+  "devDependencies": {
+    "fs-symlink": "^1.2.1"
+  }
 }
