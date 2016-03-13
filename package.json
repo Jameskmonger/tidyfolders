@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Jameskmonger/tidyfolders",
   "preferGlobal": true,
   "devDependencies": {
-    "fs-symlink": "^1.2.1"
+    "fs-symlink": "^1.2.1",
+    "tape": "^4.5.1"
   }
 }
