@@ -35,3 +35,5 @@ jspm_packages
 
 src/**/*.js
 test/**/*.js
+
+typings
