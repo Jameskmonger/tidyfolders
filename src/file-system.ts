@@ -8,7 +8,7 @@ import * as fs from 'fs';
 export class FileSystem implements IFileSystem {
 
     public getAllDirectories(path: string): Array<DirectoryModel> {
-        fs.readdirSync('');
+        fs.readdirSync(path);
         return [];
     }
 
