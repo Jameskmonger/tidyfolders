@@ -20,6 +20,7 @@
         "!node_modules/**"
     ],
     "files": [
+        "_builders/directory-model.builder.ts",
         "simple-organizer.test.ts"
     ],
     "atom": {
