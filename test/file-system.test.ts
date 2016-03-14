@@ -7,8 +7,8 @@ test('it should call fs.readdirSync for path /', t => {
     t.plan(1);
 
     let nodeFsStub = {
-        testMethod: () => {
-            console.log('test proxyquire');
+        readdirSync: (path: string) => {
+            t.pass('calls readdirSync');
         }
     };
 
@@ -16,6 +16,4 @@ test('it should call fs.readdirSync for path /', t => {
 
     let fileSystem = new FileSystem();
     fileSystem.getAllDirectories('/');
-
-    t.equal(5, 5);
 });
