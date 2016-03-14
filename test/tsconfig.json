@@ -21,6 +21,7 @@
     ],
     "files": [
         "_builders/directory-model.builder.ts",
+        "_builders/simple-organizer.builder.ts",
         "simple-organizer.test.ts"
     ],
     "atom": {
