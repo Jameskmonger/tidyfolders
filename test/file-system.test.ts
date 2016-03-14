@@ -6,6 +6,8 @@ import * as proxyquire from 'proxyquire';
 test('it should call fs.readdirSync for path /', t => {
     t.plan(1);
 
+    let givenDirectory = '/';
+
     let nodeFsStub = {
         readdirSync: (path: string) => {
             t.pass('calls readdirSync');
@@ -15,15 +17,17 @@ test('it should call fs.readdirSync for path /', t => {
     let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
 
     let fileSystem = new FileSystem();
-    fileSystem.getAllDirectories('/');
+    fileSystem.getAllDirectories(givenDirectory);
 });
 
 test('it should call fs.readdirSync with correct path for path /', t => {
     t.plan(1);
 
+    let givenDirectory = '/';
+
     let nodeFsStub = {
         readdirSync: (path: string) => {
-            if (path === '/') {
+            if (path === givenDirectory) {
                 t.pass('calls readdirSync with correct path');
             }
         }
@@ -32,5 +36,5 @@ test('it should call fs.readdirSync with correct path for path /', t => {
     let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
 
     let fileSystem = new FileSystem();
-    fileSystem.getAllDirectories('/');
+    fileSystem.getAllDirectories(givenDirectory);
 });
