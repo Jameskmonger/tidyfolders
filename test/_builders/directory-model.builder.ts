@@ -6,11 +6,7 @@ export class DirectoryModelBuilder implements IBuilder<DirectoryModel> {
     private _name;
 
     public build(): DirectoryModel {
-        let model = new DirectoryModel();
-
-        model.name = this._name;
-
-        return model;
+        return new DirectoryModel(this._name);
     }
 
     public withName(name: string): DirectoryModelBuilder {
