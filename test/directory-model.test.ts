@@ -27,3 +27,11 @@ test('stores name \'Samantha\' from constructor', t => {
 
     t.equal(model.getName(), providedName);
 });
+
+test('stores name \'Toby\' from constructor', t => {
+    let providedName = 'Toby';
+
+    let model = new DirectoryModel(providedName);
+
+    t.equal(model.getName(), providedName);
+});
