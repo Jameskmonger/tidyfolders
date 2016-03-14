@@ -24,6 +24,7 @@
         "_builders/directory-model.builder.ts",
         "_builders/simple-organizer.builder.ts",
         "directory-model.test.ts",
+        "file-system.test.ts",
         "simple-organizer.test.ts"
     ],
     "atom": {
