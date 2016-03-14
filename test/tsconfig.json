@@ -23,6 +23,7 @@
         "_builders/_interfaces/builder.i.ts",
         "_builders/directory-model.builder.ts",
         "_builders/simple-organizer.builder.ts",
+        "directory-model.test.ts",
         "simple-organizer.test.ts"
     ],
     "atom": {
