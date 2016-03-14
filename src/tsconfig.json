@@ -23,6 +23,7 @@
         "_interfaces/file-system.i.ts",
         "_interfaces/organizer.i.ts",
         "directory-model.ts",
+        "file-system.ts",
         "simple-organizer.ts"
     ],
     "atom": {
