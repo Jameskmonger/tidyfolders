@@ -57,3 +57,22 @@ test('it should call fs.readdirSync with correct path for path /users/test/', t 
     let fileSystem = new FileSystem();
     fileSystem.getAllDirectories(givenDirectory);
 });
+
+test('it should call fs.readdirSync with correct path for path /dev/media/another/subfolder/this/is/quite/deep/', t => {
+    t.plan(1);
+
+    let givenDirectory = '/dev/media/another/subfolder/this/is/quite/deep/';
+
+    let nodeFsStub = {
+        readdirSync: (path: string) => {
+            if (path === givenDirectory) {
+                t.pass('calls readdirSync with correct path');
+            }
+        }
+    };
+
+    let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+
+    let fileSystem = new FileSystem();
+    fileSystem.getAllDirectories(givenDirectory);
+});
