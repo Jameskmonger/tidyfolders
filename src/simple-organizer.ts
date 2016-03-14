@@ -4,7 +4,7 @@ import { DirectoryModel } from './directory-model';
 export class SimpleOrganizer implements IOrganizer {
 
     public getContainingDirectory(dir: DirectoryModel): string {
-        return dir.name[0].toLowerCase();
+        return dir.getName()[0].toLowerCase();
     }
 
 }
