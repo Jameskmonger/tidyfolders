@@ -22,6 +22,7 @@
   "preferGlobal": true,
   "devDependencies": {
     "fs-symlink": "^1.2.1",
+    "proxyquire": "^1.7.4",
     "simple-spy": "^1.0.3",
     "tape": "^4.5.1"
   }
