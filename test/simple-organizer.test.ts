@@ -6,7 +6,7 @@ import { DirectoryModel } from 'tidyfolders/directory-model';
 import * as test from 'tape';
 import { DirectoryModelBuilder } from './_builders/directory-model.builder';
 
-test('directory "james" returns "j"', t => {
+test('directory \'james\' returns \'j\'', t => {
     let directoryName = 'james';
     let expectedContainingDirectory = 'j';
 
@@ -18,7 +18,7 @@ test('directory "james" returns "j"', t => {
     t.equal(organizer.getContainingDirectory(model), expectedContainingDirectory);
 });
 
-test('directory "JAMES" returns "j"', t => {
+test('directory \'JAMES\' returns \'j\'', t => {
     let directoryName = 'JAMES';
     let expectedContainingDirectory = 'j';
 
@@ -30,7 +30,7 @@ test('directory "JAMES" returns "j"', t => {
     t.equal(organizer.getContainingDirectory(model), expectedContainingDirectory);
 });
 
-test('directory "apple" returns "a"', t => {
+test('directory \'apple\' returns \'a\'', t => {
     let directoryName = 'apple';
     let expectedContainingDirectory = 'a';
 
@@ -42,7 +42,7 @@ test('directory "apple" returns "a"', t => {
     t.equal(organizer.getContainingDirectory(model), expectedContainingDirectory);
 });
 
-test('directory "APPLE" returns "a"', t => {
+test('directory \'APPLE\' returns \'a\'', t => {
     let directoryName = 'APPLE';
     let expectedContainingDirectory = 'a';
 
