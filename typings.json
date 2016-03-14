@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "proxyquire": "registry:npm/proxyquire#1.0.0+20160211003958",
     "tape": "registry:npm/tape#4.0.0+20160211003958"
   },
   "ambientDependencies": {
