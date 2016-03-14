@@ -5,7 +5,11 @@ export class DirectoryModelBuilder {
     private _name;
 
     public build(): DirectoryModel {
-        return new DirectoryModel();
+        let model = new DirectoryModel();
+
+        model.name = this._name;
+
+        return model;
     }
 
     public withName(name: string): DirectoryModelBuilder {
