@@ -27,3 +27,25 @@ test('directory "JAMES" returns "j"', t => {
 
     t.equal(organizer.getContainingDirectory(model), 'j');
 });
+
+test('directory "apple" returns "a"', t => {
+    let directoryName = 'apple';
+
+    t.plan(1);
+
+    let organizer = new SimpleOrganizer();
+    let model = new DirectoryModelBuilder().withName(directoryName).build();
+
+    t.equal(organizer.getContainingDirectory(model), 'a');
+});
+
+test('directory "APPLE" returns "a"', t => {
+    let directoryName = 'APPLE';
+
+    t.plan(1);
+
+    let organizer = new SimpleOrganizer();
+    let model = new DirectoryModelBuilder().withName(directoryName).build();
+
+    t.equal(organizer.getContainingDirectory(model), 'a');
+});
