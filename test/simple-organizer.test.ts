@@ -14,3 +14,12 @@ test('directory "james" returns "j"', t => {
 
     t.equal(organizer.getContainingDirectory(model), 'j');
 });
+
+test('directory "JAMES" returns "j"', t => {
+    t.plan(1);
+
+    let organizer = new SimpleOrganizer();
+    let model = new DirectoryModelBuilder().withName('JAMES').build();
+
+    t.equal(organizer.getContainingDirectory(model), 'j');
+});
