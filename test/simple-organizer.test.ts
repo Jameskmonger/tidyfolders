@@ -89,3 +89,15 @@ test('directory \'3\' returns \'3\'', t => {
 
     t.equal(organizer.getContainingDirectory(model), expectedContainingDirectory);
 });
+
+test('directory \'33\' returns \'3\'', t => {
+    let directoryName = '33';
+    let expectedContainingDirectory = '3';
+
+    t.plan(1);
+
+    let organizer = new SimpleOrganizer();
+    let model = new DirectoryModelBuilder().withName(directoryName).build();
+
+    t.equal(organizer.getContainingDirectory(model), expectedContainingDirectory);
+});
