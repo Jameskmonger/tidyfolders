@@ -20,7 +20,7 @@
         "!node_modules/**"
     ],
     "files": [
-        "_interfaces/filesystem.i.ts",
+        "_interfaces/file-system.i.ts",
         "_interfaces/organizer.i.ts",
         "directory-model.ts",
         "simple-organizer.ts"
