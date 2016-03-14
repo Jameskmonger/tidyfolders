@@ -22,7 +22,8 @@
     "files": [
         "_interfaces/filesystem.i.ts",
         "_interfaces/organizer.i.ts",
-        "directory-model.ts"
+        "directory-model.ts",
+        "simple-organizer.ts"
     ],
     "atom": {
         "rewriteTsconfig": true
