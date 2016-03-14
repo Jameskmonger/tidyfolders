@@ -1,6 +1,7 @@
+import { IBuilder } from './_interfaces/builder.i';
 import { DirectoryModel } from 'tidyfolders/directory-model';
 
-export class DirectoryModelBuilder {
+export class DirectoryModelBuilder implements IBuilder<DirectoryModel> {
 
     private _name;
 
