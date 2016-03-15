@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-all": "tsc -p src && tsc -p test",
-    "run-test": "node ./node_modules/.bin/tape test/**/*.test.js",
+    "run-test": "./node_modules/.bin/tape test/**/*.test.js | ./node_modules/.bin/colortape",
     "test": "npm run symlink && npm run build-all && npm run run-test",
     "symlink": "node ./scripts/link.js"
   },
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Jameskmonger/tidyfolders",
   "preferGlobal": true,
   "devDependencies": {
+    "colortape": "^0.1.1",
     "fs-symlink": "^1.2.1",
     "proxyquire": "^1.7.4",
     "simple-spy": "^1.0.3",
