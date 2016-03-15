@@ -1,5 +1,7 @@
 ///<reference path="../typings/main.d.ts"/>
 
+import { DirectoryModel } from 'tidyfolders/directory-model';
+
 import * as test from 'tape';
 import * as proxyquire from 'proxyquire';
 
@@ -96,10 +98,10 @@ test('it should filter the results of readdirSync', t => {
     fileSystem.getAllDirectories('/');
 });
 
-test.only('it should return only directories', t => {
-    t.plan(1);
-
+test('it should return only directories', t => {
     let directories = ['dir1', 'another-dir', 'test'];
+    t.plan(directories.length);
+
     let files = ['test.jpg', 'another-test.docx'];
 
     let nodeFsStub = {
@@ -107,7 +109,7 @@ test.only('it should return only directories', t => {
         statSync: (path: string) => {
             return {
                 isDirectory: () => {
-                    return true;
+                    return directories.indexOf(path) !== -1;
                 }
             };
         }
@@ -116,7 +118,10 @@ test.only('it should return only directories', t => {
     let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
 
     let fileSystem = new FileSystem();
-    let returnedDirectories = fileSystem.getAllDirectories('/');
+    let returnedDirectories: Array<DirectoryModel> = fileSystem.getAllDirectories('');
+    let returnedDirectoriesNames = returnedDirectories.map(d => d.getName());
 
-    t.equal(returnedDirectories, directories);
+    for (let i = 0; i < directories.length; i++) {
+        t.equal(returnedDirectoriesNames[i], directories[i]);
+    }
 });

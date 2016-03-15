@@ -12,9 +12,7 @@ export class FileSystem implements IFileSystem {
             return fs.statSync(file).isDirectory();
         });
 
-        console.log(files);
-
-        return [];
+        return files.map(f => new DirectoryModel(f));
     }
 
 }
