@@ -71,4 +71,19 @@ test('organizeFolder', o => {
         }, "Error: path cannot be null or undefined");
     });
 
+    o.test('it throws Error if null path', t => {
+        t.plan(1);
+
+        let fileSystem = <IFileSystem>{};
+        let organizer = new SimpleOrganizerBuilder().build();
+
+        let manager = new TidyFoldersManager(fileSystem, organizer);
+
+        let providedPath = null;
+
+        t.throws(() => {
+            manager.organizeFolder(providedPath);
+        }, "Error: path cannot be null or undefined");
+    });
+
 });
