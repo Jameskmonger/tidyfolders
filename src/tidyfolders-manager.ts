@@ -5,7 +5,9 @@ export class TidyFoldersManager {
     constructor(
         fileSystem: IFileSystem
     ) {
-        
+        if (fileSystem === null || fileSystem === undefined) {
+            throw Error("Dependency 'fileSystem' was null or undefined.");
+        }
     }
 
 }
