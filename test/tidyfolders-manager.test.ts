@@ -13,3 +13,13 @@ test('it throws Error if undefined fileSystem', t => {
         new TidyFoldersManager(providedFileSystem)
     }, /^Error: This is my error message.$/);
 });
+
+test('it throws Error if null fileSystem', t => {
+    t.plan(1);
+
+    let providedFileSystem = null;
+
+    t.throws(() => {
+        new TidyFoldersManager(providedFileSystem)
+    }, /^Error: This is my error message.$/);
+});
