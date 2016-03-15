@@ -13,6 +13,7 @@ test('it should call fs.readdirSync for path /', t => {
     let nodeFsStub = {
         readdirSync: (path: string) => {
             t.pass('calls readdirSync');
+            return [];
         }
     };
 
@@ -32,6 +33,7 @@ test('it should call fs.readdirSync with correct path for path /', t => {
             if (path === givenDirectory) {
                 t.pass('calls readdirSync with correct path');
             }
+            return [];
         }
     };
 
@@ -51,6 +53,7 @@ test('it should call fs.readdirSync with correct path for path /users/test/', t 
             if (path === givenDirectory) {
                 t.pass('calls readdirSync with correct path');
             }
+            return [];
         }
     };
 
@@ -70,6 +73,7 @@ test('it should call fs.readdirSync with correct path for path /dev/media/anothe
             if (path === givenDirectory) {
                 t.pass('calls readdirSync with correct path');
             }
+            return [];
         }
     };
 
@@ -87,6 +91,7 @@ test('it should filter the results of readdirSync', t => {
             return {
                 filter: () => {
                     t.pass();
+                    return [];
                 }
             }
         }
