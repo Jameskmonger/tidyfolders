@@ -5,6 +5,7 @@ import { TidyFoldersManager } from 'tidyfolders/tidyfolders-manager';
 import { SimpleOrganizerBuilder } from './_builders/simple-organizer.builder';
 
 import * as test from 'tape';
+import * as proxyquire from 'proxyquire';
 
 test('constructor', c => {
 
@@ -51,5 +52,37 @@ test('constructor', c => {
             new TidyFoldersManager(fileSystem, organizer)
         }, "Error: Dependency 'organizer' was null or undefined.");
     });
-    
+
+});
+
+test('organizeFolder', o => {
+
+    o.test('it throws Error if undefined path', t => {
+        t.plan(1);
+
+        let nodeFsStub = {
+            readdirSync: (path: string) => [],
+            statSync: (path: string) => {
+                return {
+                    isDirectory: () => {
+                        return true;
+                    }
+                };
+            }
+        };
+
+        let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+
+        let fileSystem = new FileSystem();
+        let organizer = new SimpleOrganizerBuilder().build();
+
+        let manager = new TidyFoldersManager(fileSystem, organizer);
+
+        let providedPath = undefined;
+
+        t.throws(() => {
+            manager.organizeFolder(providedPath);
+        }, "Error: path cannot be null or undefined");
+    });
+
 });
