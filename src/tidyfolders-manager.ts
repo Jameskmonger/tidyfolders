@@ -26,6 +26,11 @@ export class TidyFoldersManager {
         if (path === null || path === undefined) {
             throw Error("path cannot be null or undefined.");
         }
+
+        let dirs = this._fileSystem.getAllDirectories(path);
+        for (let dir of dirs) {
+            let containingDirectory = this._organizer.getContainingDirectory(dir);
+        }
     }
 
 }
