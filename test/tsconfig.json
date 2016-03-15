@@ -22,7 +22,6 @@
     "files": [
         "_builders/_interfaces/builder.i.ts",
         "_builders/directory-model.builder.ts",
-        "_builders/file-system.builder.ts",
         "_builders/simple-organizer.builder.ts",
         "directory-model.test.ts",
         "file-system.test.ts",
