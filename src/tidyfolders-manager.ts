@@ -10,6 +10,10 @@ export class TidyFoldersManager {
         if (fileSystem === null || fileSystem === undefined) {
             throw Error("Dependency 'fileSystem' was null or undefined.");
         }
+
+        if (organizer === null || organizer === undefined) {
+            throw Error("Dependency 'organizer' was null or undefined.");
+        }
     }
 
 }
