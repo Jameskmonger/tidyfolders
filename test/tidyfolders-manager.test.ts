@@ -55,7 +55,7 @@ test('constructor', c => {
 
 });
 
-test('organizeFolder', o => {
+test('organizeDirectory', o => {
 
     o.test('it throws Error if undefined path', t => {
         t.plan(1);
@@ -68,7 +68,7 @@ test('organizeFolder', o => {
         let providedPath = undefined;
 
         t.throws(() => {
-            manager.organizeFolder(providedPath);
+            manager.organizeDirectory(providedPath);
         }, "Error: path cannot be null or undefined");
     });
 
@@ -83,7 +83,7 @@ test('organizeFolder', o => {
         let providedPath = null;
 
         t.throws(() => {
-            manager.organizeFolder(providedPath);
+            manager.organizeDirectory(providedPath);
         }, "Error: path cannot be null or undefined");
     });
 
@@ -100,7 +100,7 @@ test('organizeFolder', o => {
 
         let manager = new TidyFoldersManager(fileSystem, organizer);
 
-        manager.organizeFolder('/');
+        manager.organizeDirectory('/');
         t.end();
     });
 
@@ -121,7 +121,7 @@ test('organizeFolder', o => {
 
         let manager = new TidyFoldersManager(fileSystem, organizer);
 
-        manager.organizeFolder(providedPath);
+        manager.organizeDirectory(providedPath);
         t.end();
     });
 
@@ -142,7 +142,7 @@ test('organizeFolder', o => {
 
         let manager = new TidyFoldersManager(fileSystem, organizer);
 
-        manager.organizeFolder(providedPath);
+        manager.organizeDirectory(providedPath);
         t.end();
     });
 
@@ -167,7 +167,7 @@ test('organizeFolder', o => {
 
         let manager = new TidyFoldersManager(fileSystem, organizer);
 
-        manager.organizeFolder('');
+        manager.organizeDirectory('');
         t.end();
     });
 
@@ -192,7 +192,7 @@ test('organizeFolder', o => {
 
         let manager = new TidyFoldersManager(fileSystem, organizer);
 
-        manager.organizeFolder('');
+        manager.organizeDirectory('');
         t.end();
     });
 
