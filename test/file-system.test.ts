@@ -130,3 +130,55 @@ test('it should return only directories', t => {
         t.equal(returnedDirectoriesNames[i], directories[i]);
     }
 });
+
+test('it should get stats for path/file', t => {
+    t.plan(1);
+
+    let basePath = 'path'
+    let directories = ['file'];
+
+    let nodeFsStub = {
+        readdirSync: (path: string) => directories,
+        statSync: (path: string) => {
+            if (path === basePath) {
+                t.pass('gets stats for correct full path');
+            }
+
+            return {
+                isDirectory: () => true
+            }
+        }
+    };
+
+    let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+
+    let fileSystem = new FileSystem();
+    fileSystem.getAllDirectories(basePath);
+    t.end();
+});
+
+test('it should get stats for basePath/newFile', t => {
+    t.plan(1);
+
+    let basePath = 'basePath'
+    let directories = ['newFile'];
+
+    let nodeFsStub = {
+        readdirSync: (path: string) => directories,
+        statSync: (path: string) => {
+            if (path === basePath) {
+                t.pass('gets stats for correct full path');
+            }
+
+            return {
+                isDirectory: () => true
+            }
+        }
+    };
+
+    let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+
+    let fileSystem = new FileSystem();
+    fileSystem.getAllDirectories(basePath);
+    t.end();
+});
