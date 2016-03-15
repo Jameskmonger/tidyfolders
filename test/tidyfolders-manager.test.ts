@@ -7,7 +7,9 @@ import * as test from 'tape';
 test('it throws Error if undefined fileSystem', t => {
     t.plan(1);
 
+    let providedFileSystem = undefined;
+
     t.throws(() => {
-        new TidyFoldersManager(undefined)
+        new TidyFoldersManager(providedFileSystem)
     }, /^Error: This is my error message.$/);
 });
