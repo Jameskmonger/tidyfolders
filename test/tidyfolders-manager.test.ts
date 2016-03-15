@@ -104,6 +104,27 @@ test('organizeFolder', o => {
         t.end();
     });
 
+    o.test('it gets directories from injected file system for path /', t => {
+        t.plan(1);
+
+        let providedPath = '/';
+
+        let fileSystem = <IFileSystem>{
+            getAllDirectories: (path: string) => {
+                if (path === providedPath) {
+                    t.pass();
+                }
+                return [];
+            }
+        };
+        let organizer = new SimpleOrganizerBuilder().build();
+
+        let manager = new TidyFoldersManager(fileSystem, organizer);
+
+        manager.organizeFolder(providedPath);
+        t.end();
+    });
+
     o.test('it passes first DirectoryModel into organizer', t => {
         t.plan(1);
 
