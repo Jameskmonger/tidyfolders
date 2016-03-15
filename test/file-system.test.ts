@@ -76,3 +76,22 @@ test('it should call fs.readdirSync with correct path for path /dev/media/anothe
     let fileSystem = new FileSystem();
     fileSystem.getAllDirectories(givenDirectory);
 });
+
+test('it should filter the results of readdirSync', t => {
+    t.plan(1);
+
+    let nodeFsStub = {
+        readdirSync: (path: string) => {
+            return {
+                filter: () => {
+                    t.pass();
+                }
+            }
+        }
+    };
+
+    let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+
+    let fileSystem = new FileSystem();
+    fileSystem.getAllDirectories('/');
+});
