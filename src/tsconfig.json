@@ -24,7 +24,8 @@
         "_interfaces/organizer.i.ts",
         "directory-model.ts",
         "file-system.ts",
-        "simple-organizer.ts"
+        "simple-organizer.ts",
+        "tidyfolders-manager.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

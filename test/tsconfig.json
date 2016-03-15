@@ -25,7 +25,8 @@
         "_builders/simple-organizer.builder.ts",
         "directory-model.test.ts",
         "file-system.test.ts",
-        "simple-organizer.test.ts"
+        "simple-organizer.test.ts",
+        "tidyfolders-manager.test.ts"
     ],
     "atom": {
         "rewriteTsconfig": true
