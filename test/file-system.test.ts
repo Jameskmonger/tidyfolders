@@ -95,3 +95,28 @@ test('it should filter the results of readdirSync', t => {
     let fileSystem = new FileSystem();
     fileSystem.getAllDirectories('/');
 });
+
+test.only('it should return only directories', t => {
+    t.plan(1);
+
+    let directories = ['dir1', 'another-dir', 'test'];
+    let files = ['test.jpg', 'another-test.docx'];
+
+    let nodeFsStub = {
+        readdirSync: (path: string) => directories.concat(files),
+        statSync: (path: string) => {
+            return {
+                isDirectory: () => {
+                    return true;
+                }
+            };
+        }
+    };
+
+    let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+
+    let fileSystem = new FileSystem();
+    let returnedDirectories = fileSystem.getAllDirectories('/');
+
+    t.equal(returnedDirectories, directories);
+});

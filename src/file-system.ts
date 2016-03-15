@@ -8,9 +8,12 @@ import * as fs from 'fs';
 export class FileSystem implements IFileSystem {
 
     public getAllDirectories(path: string): Array<DirectoryModel> {
-        fs.readdirSync(path).filter((file) => {
-            return false;
+        let files = fs.readdirSync(path).filter((file) => {
+            return fs.statSync(file).isDirectory();
         });
+
+        console.log(files);
+
         return [];
     }
 
