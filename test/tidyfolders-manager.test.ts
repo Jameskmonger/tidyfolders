@@ -92,7 +92,7 @@ test('organizeDirectory', o => {
 
         let fileSystem = <IFileSystem>{
             getAllDirectories: () => {
-                t.pass();
+                t.pass('called getAllDirectories');
                 return [];
             }
         };
@@ -112,7 +112,7 @@ test('organizeDirectory', o => {
         let fileSystem = <IFileSystem>{
             getAllDirectories: (path: string) => {
                 if (path === providedPath) {
-                    t.pass();
+                    t.pass('called getAllDirectories with correct path');
                 }
                 return [];
             }
@@ -133,7 +133,7 @@ test('organizeDirectory', o => {
         let fileSystem = <IFileSystem>{
             getAllDirectories: (path: string) => {
                 if (path === providedPath) {
-                    t.pass();
+                    t.pass('called getAllDirectories with correct path');
                 }
                 return [];
             }
