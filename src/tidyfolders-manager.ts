@@ -17,7 +17,9 @@ export class TidyFoldersManager {
     }
 
     public organizeFolder(path: string): void {
-        
+        if (path === null || path === undefined) {
+            throw Error("path cannot be null or undefined.");
+        }
     }
 
 }
