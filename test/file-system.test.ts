@@ -135,12 +135,15 @@ test('it should get stats for path/file', t => {
     t.plan(1);
 
     let basePath = 'path'
-    let directories = ['file'];
+    let firstDirectory = 'file';
+    let directories = [firstDirectory];
+
+    let expectedPath = `${basePath}/${firstDirectory}`;
 
     let nodeFsStub = {
         readdirSync: (path: string) => directories,
         statSync: (path: string) => {
-            if (path === basePath) {
+            if (path === expectedPath) {
                 t.pass('gets stats for correct full path');
             }
 
@@ -161,12 +164,15 @@ test('it should get stats for basePath/newFile', t => {
     t.plan(1);
 
     let basePath = 'basePath'
-    let directories = ['newFile'];
+    let firstDirectory = 'newFile';
+    let directories = [firstDirectory];
+
+    let expectedPath = `${basePath}/${firstDirectory}`;
 
     let nodeFsStub = {
         readdirSync: (path: string) => directories,
         statSync: (path: string) => {
-            if (path === basePath) {
+            if (path === expectedPath) {
                 t.pass('gets stats for correct full path');
             }
 
