@@ -6,46 +6,50 @@ import { SimpleOrganizerBuilder } from './_builders/simple-organizer.builder';
 
 import * as test from 'tape';
 
-test('it throws Error if undefined fileSystem', t => {
-    t.plan(1);
+test('constructor', c => {
 
-    let fileSystem = undefined;
-    let organizer = new SimpleOrganizerBuilder().build();
+    c.test('it throws Error if undefined fileSystem', t => {
+        t.plan(1);
 
-    t.throws(() => {
-        new TidyFoldersManager(fileSystem, organizer)
-    }, "Error: Dependency 'fileSystem' was null or undefined.");
-});
+        let fileSystem = undefined;
+        let organizer = new SimpleOrganizerBuilder().build();
 
-test('it throws Error if null fileSystem', t => {
-    t.plan(1);
+        t.throws(() => {
+            new TidyFoldersManager(fileSystem, organizer)
+        }, "Error: Dependency 'fileSystem' was null or undefined.");
+    });
 
-    let fileSystem = null;
-    let organizer = new SimpleOrganizerBuilder().build();
+    c.test('it throws Error if null fileSystem', t => {
+        t.plan(1);
 
-    t.throws(() => {
-        new TidyFoldersManager(fileSystem, organizer)
-    }, "Error: Dependency 'fileSystem' was null or undefined.");
-});
+        let fileSystem = null;
+        let organizer = new SimpleOrganizerBuilder().build();
 
-test('it throws Error if undefined organizer', t => {
-    t.plan(1);
+        t.throws(() => {
+            new TidyFoldersManager(fileSystem, organizer)
+        }, "Error: Dependency 'fileSystem' was null or undefined.");
+    });
 
-    let fileSystem = <IFileSystem>{};
-    let organizer = undefined;
+    c.test('it throws Error if undefined organizer', t => {
+        t.plan(1);
 
-    t.throws(() => {
-        new TidyFoldersManager(fileSystem, organizer)
-    }, "Error: Dependency 'organizer' was null or undefined.");
-});
+        let fileSystem = <IFileSystem>{};
+        let organizer = undefined;
 
-test('it throws Error if null fileSystem', t => {
-    t.plan(1);
+        t.throws(() => {
+            new TidyFoldersManager(fileSystem, organizer)
+        }, "Error: Dependency 'organizer' was null or undefined.");
+    });
 
-    let fileSystem = <IFileSystem>{};
-    let organizer = null;
+    c.test('it throws Error if null fileSystem', t => {
+        t.plan(1);
 
-    t.throws(() => {
-        new TidyFoldersManager(fileSystem, organizer)
-    }, "Error: Dependency 'organizer' was null or undefined.");
+        let fileSystem = <IFileSystem>{};
+        let organizer = null;
+
+        t.throws(() => {
+            new TidyFoldersManager(fileSystem, organizer)
+        }, "Error: Dependency 'organizer' was null or undefined.");
+    });
+    
 });
