@@ -3,6 +3,9 @@ import { IOrganizer } from './_interfaces/organizer.i';
 
 export class TidyFoldersManager {
 
+    private _fileSystem: IFileSystem;
+    private _organizer: IOrganizer;
+
     constructor(
         fileSystem: IFileSystem,
         organizer: IOrganizer
@@ -14,6 +17,9 @@ export class TidyFoldersManager {
         if (organizer === null || organizer === undefined) {
             throw Error("Dependency 'organizer' was null or undefined.");
         }
+
+        this._fileSystem = fileSystem;
+        this._organizer = organizer;
     }
 
     public organizeFolder(path: string): void {
