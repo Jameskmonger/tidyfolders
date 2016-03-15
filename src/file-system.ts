@@ -3,18 +3,18 @@
 import { IFileSystem } from './_interfaces/file-system.i';
 import { DirectoryModel } from './directory-model';
 
-import * as fs from 'fs';
+import * as NodeFSLibrary from 'fs';
 import * as NodePathLibrary from 'path';
 
 export class FileSystem implements IFileSystem {
 
     public getAllDirectories(path: string): Array<DirectoryModel> {
-        let files = fs.readdirSync(path);
+        let files = NodeFSLibrary.readdirSync(path);
 
         let directories = files.filter((file) => {
             let fullPath = NodePathLibrary.join(path, file);
-            
-            return fs.statSync(fullPath).isDirectory();
+
+            return NodeFSLibrary.statSync(fullPath).isDirectory();
         });
 
         return directories.map(f => new DirectoryModel(f));
