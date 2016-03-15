@@ -109,6 +109,7 @@ test('organizeFolder', o => {
         let manager = new TidyFoldersManager(fileSystem, organizer);
 
         manager.organizeFolder('');
+        t.end();
     });
 
     o.test('it passes second DirectoryModel into organizer', t => {
@@ -133,6 +134,7 @@ test('organizeFolder', o => {
         let manager = new TidyFoldersManager(fileSystem, organizer);
 
         manager.organizeFolder('');
+        t.end();
     });
 
 });
