@@ -1,6 +1,7 @@
 ///<reference path="../typings/main.d.ts"/>
 
 import { IFileSystem } from 'tidyfolders/_interfaces/file-system.i';
+import { DirectoryModel} from 'tidyfolders/directory-model';
 import { TidyFoldersManager } from 'tidyfolders/tidyfolders-manager';
 import { SimpleOrganizerBuilder } from './_builders/simple-organizer.builder';
 
