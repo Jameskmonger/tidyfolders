@@ -111,4 +111,28 @@ test('organizeFolder', o => {
         manager.organizeFolder('');
     });
 
+    o.test('it passes second DirectoryModel into organizer', t => {
+        t.plan(1);
+
+        let firstModel = new DirectoryModel('firstModelName');
+        let secondModel = new DirectoryModel('secondModelName');
+
+        let fileSystem = <IFileSystem>{
+            getAllDirectories: () => {
+                return [ firstModel, secondModel ];
+            }
+        };
+        let organizer = new SimpleOrganizerBuilder().build();
+        organizer.getContainingDirectory = (model: DirectoryModel) => {
+            if (model === secondModel) {
+                t.pass('organizer called with second model');
+            }
+            return '';
+        }
+
+        let manager = new TidyFoldersManager(fileSystem, organizer);
+
+        manager.organizeFolder('');
+    });
+
 });
