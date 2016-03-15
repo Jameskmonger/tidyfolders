@@ -87,6 +87,23 @@ test('organizeFolder', o => {
         }, "Error: path cannot be null or undefined");
     });
 
+    o.test('it gets directories from injected file system', t => {
+        t.plan(1);
+
+        let fileSystem = <IFileSystem>{
+            getAllDirectories: () => {
+                t.pass();
+                return [];
+            }
+        };
+        let organizer = new SimpleOrganizerBuilder().build();
+
+        let manager = new TidyFoldersManager(fileSystem, organizer);
+
+        manager.organizeFolder('/');
+        t.end();
+    });
+
     o.test('it passes first DirectoryModel into organizer', t => {
         t.plan(1);
 
