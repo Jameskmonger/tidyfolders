@@ -11,7 +11,7 @@ test('it throws Error if undefined fileSystem', t => {
 
     t.throws(() => {
         new TidyFoldersManager(providedFileSystem)
-    }, /^Error: This is my error message.$/);
+    }, "Error: Dependency 'fileSystem' was null or undefined.");
 });
 
 test('it throws Error if null fileSystem', t => {
@@ -21,5 +21,5 @@ test('it throws Error if null fileSystem', t => {
 
     t.throws(() => {
         new TidyFoldersManager(providedFileSystem)
-    }, /^Error: This is my error message.$/);
+    }, "Error: Dependency 'fileSystem' was null or undefined.");
 });
