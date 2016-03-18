@@ -94,6 +94,9 @@ test('organizeDirectory', o => {
             getAllDirectories: () => {
                 t.pass('called getAllDirectories');
                 return [];
+            },
+            moveDirectory: (target: DirectoryModel, into: string) => {
+
             }
         };
         let organizer = new SimpleOrganizerBuilder().build();
@@ -115,6 +118,9 @@ test('organizeDirectory', o => {
                     t.pass('called getAllDirectories with correct path');
                 }
                 return [];
+            },
+            moveDirectory: (target: DirectoryModel, into: string) => {
+
             }
         };
         let organizer = new SimpleOrganizerBuilder().build();
@@ -136,6 +142,9 @@ test('organizeDirectory', o => {
                     t.pass('called getAllDirectories with correct path');
                 }
                 return [];
+            },
+            moveDirectory: (target: DirectoryModel, into: string) => {
+
             }
         };
         let organizer = new SimpleOrganizerBuilder().build();
@@ -155,6 +164,9 @@ test('organizeDirectory', o => {
         let fileSystem = <IFileSystem>{
             getAllDirectories: () => {
                 return [ firstModel, secondModel ];
+            },
+            moveDirectory: (target: DirectoryModel, into: string) => {
+
             }
         };
         let organizer = new SimpleOrganizerBuilder().build();
@@ -180,6 +192,9 @@ test('organizeDirectory', o => {
         let fileSystem = <IFileSystem>{
             getAllDirectories: () => {
                 return [ firstModel, secondModel ];
+            },
+            moveDirectory: (target: DirectoryModel, into: string) => {
+
             }
         };
         let organizer = new SimpleOrganizerBuilder().build();
