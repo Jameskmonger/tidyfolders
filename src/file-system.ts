@@ -9,7 +9,9 @@ import * as NodePathLibrary from 'path';
 export class FileSystem implements IFileSystem {
 
     constructor(moveDir: (target: string, into: string) => void) {
-        
+        if (moveDir === null || moveDir === undefined) {
+            throw Error("Dependency 'moveDir' was null or undefined.");
+        }
     }
 
     public getAllDirectories(path: string): Array<DirectoryModel> {
