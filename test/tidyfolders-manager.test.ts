@@ -259,6 +259,30 @@ test('TidyFoldersManager', p => {
             t.end();
         });
 
+        o.test('it moves the second directory model', t => {
+            t.plan(1);
+
+            let firstModel = new DirectoryModel('firstModelName');
+            let secondModel = new DirectoryModel('secondModelName');
+
+            let fileSystem = <IFileSystem>{
+                getAllDirectories: () => {
+                    return [ firstModel, secondModel ];
+                },
+                moveDirectory: (target: DirectoryModel, into: string) => {
+                    if (target === secondModel) {
+                        t.pass('moveDirectory called with the second model');
+                    }
+                }
+            };
+            let organizer = new SimpleOrganizerBuilder().build();
+
+            let manager = new TidyFoldersManager(fileSystem, organizer);
+
+            manager.organizeDirectory('');
+            t.end();
+        });
+
     });
 
 });
