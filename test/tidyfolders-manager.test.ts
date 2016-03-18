@@ -216,12 +216,9 @@ test('TidyFoldersManager', p => {
         o.test('it moves a directory', t => {
             t.plan(1);
 
-            let firstModel = new DirectoryModel('firstModelName');
-            let secondModel = new DirectoryModel('secondModelName');
-
             let fileSystem = <IFileSystem>{
                 getAllDirectories: () => {
-                    return [ firstModel, secondModel ];
+                    return [ new DirectoryModel('firstModelName') ];
                 },
                 moveDirectory: (target: DirectoryModel, into: string) => {
                     t.pass('moveDirectory called');
