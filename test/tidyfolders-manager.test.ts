@@ -283,6 +283,30 @@ test('TidyFoldersManager', p => {
             t.end();
         });
 
+        o.test('it moves a directory to folder "a" when organizer returns "a"', t => {
+            t.plan(1);
+
+            let organizerReturn = 'a';
+
+            let fileSystem = <IFileSystem>{
+                getAllDirectories: () => {
+                    return [ new DirectoryModel('firstModelName') ];
+                },
+                moveDirectory: (target: DirectoryModel, into: string) => {
+                    if (into === organizerReturn) {
+                        t.pass('moveDirectory called with return from organizer');
+                    }
+                }
+            };
+            let organizer = new SimpleOrganizerBuilder().build();
+            organizer.getContainingDirectory = (model: DirectoryModel) => organizerReturn;
+
+            let manager = new TidyFoldersManager(fileSystem, organizer);
+
+            manager.organizeDirectory('');
+            t.end();
+        });
+
     });
 
 });
