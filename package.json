@@ -9,6 +9,9 @@
     "test": "npm run symlink && npm run build-all && npm run run-test",
     "symlink": "node ./scripts/link.js"
   },
+  "bin": {
+    "tidyfolders": "index.js"  
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/Jameskmonger/tidyfolders.git"
