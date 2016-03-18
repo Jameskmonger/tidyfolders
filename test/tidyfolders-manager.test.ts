@@ -7,208 +7,234 @@ import { SimpleOrganizerBuilder } from './_builders/simple-organizer.builder';
 
 import * as test from 'tape';
 
-test('constructor', c => {
+test('TidyFoldersManager', p => {
 
-    c.test('it throws Error if undefined fileSystem', t => {
-        t.plan(1);
+    p.test('constructor', c => {
 
-        let fileSystem = undefined;
-        let organizer = new SimpleOrganizerBuilder().build();
+        c.test('it throws Error if undefined fileSystem', t => {
+            t.plan(1);
 
-        t.throws(() => {
-            new TidyFoldersManager(fileSystem, organizer)
-        }, "Error: Dependency 'fileSystem' was null or undefined.");
+            let fileSystem = undefined;
+            let organizer = new SimpleOrganizerBuilder().build();
+
+            t.throws(() => {
+                new TidyFoldersManager(fileSystem, organizer)
+            }, "Error: Dependency 'fileSystem' was null or undefined.");
+        });
+
+        c.test('it throws Error if null fileSystem', t => {
+            t.plan(1);
+
+            let fileSystem = null;
+            let organizer = new SimpleOrganizerBuilder().build();
+
+            t.throws(() => {
+                new TidyFoldersManager(fileSystem, organizer)
+            }, "Error: Dependency 'fileSystem' was null or undefined.");
+        });
+
+        c.test('it throws Error if undefined organizer', t => {
+            t.plan(1);
+
+            let fileSystem = <IFileSystem>{};
+            let organizer = undefined;
+
+            t.throws(() => {
+                new TidyFoldersManager(fileSystem, organizer)
+            }, "Error: Dependency 'organizer' was null or undefined.");
+        });
+
+        c.test('it throws Error if null fileSystem', t => {
+            t.plan(1);
+
+            let fileSystem = <IFileSystem>{};
+            let organizer = null;
+
+            t.throws(() => {
+                new TidyFoldersManager(fileSystem, organizer)
+            }, "Error: Dependency 'organizer' was null or undefined.");
+        });
+
     });
 
-    c.test('it throws Error if null fileSystem', t => {
-        t.plan(1);
+    p.test('organizeDirectory', o => {
 
-        let fileSystem = null;
-        let organizer = new SimpleOrganizerBuilder().build();
+        o.test('it throws Error if undefined path', t => {
+            t.plan(1);
 
-        t.throws(() => {
-            new TidyFoldersManager(fileSystem, organizer)
-        }, "Error: Dependency 'fileSystem' was null or undefined.");
-    });
+            let fileSystem = <IFileSystem>{};
+            let organizer = new SimpleOrganizerBuilder().build();
 
-    c.test('it throws Error if undefined organizer', t => {
-        t.plan(1);
+            let manager = new TidyFoldersManager(fileSystem, organizer);
 
-        let fileSystem = <IFileSystem>{};
-        let organizer = undefined;
+            let providedPath = undefined;
 
-        t.throws(() => {
-            new TidyFoldersManager(fileSystem, organizer)
-        }, "Error: Dependency 'organizer' was null or undefined.");
-    });
+            t.throws(() => {
+                manager.organizeDirectory(providedPath);
+            }, "Error: path cannot be null or undefined");
+        });
 
-    c.test('it throws Error if null fileSystem', t => {
-        t.plan(1);
+        o.test('it throws Error if null path', t => {
+            t.plan(1);
 
-        let fileSystem = <IFileSystem>{};
-        let organizer = null;
+            let fileSystem = <IFileSystem>{};
+            let organizer = new SimpleOrganizerBuilder().build();
 
-        t.throws(() => {
-            new TidyFoldersManager(fileSystem, organizer)
-        }, "Error: Dependency 'organizer' was null or undefined.");
-    });
+            let manager = new TidyFoldersManager(fileSystem, organizer);
 
-});
+            let providedPath = null;
 
-test('organizeDirectory', o => {
+            t.throws(() => {
+                manager.organizeDirectory(providedPath);
+            }, "Error: path cannot be null or undefined");
+        });
 
-    o.test('it throws Error if undefined path', t => {
-        t.plan(1);
+        o.test('it gets directories from injected file system', t => {
+            t.plan(1);
 
-        let fileSystem = <IFileSystem>{};
-        let organizer = new SimpleOrganizerBuilder().build();
+            let fileSystem = <IFileSystem>{
+                getAllDirectories: () => {
+                    t.pass('called getAllDirectories');
+                    return [];
+                },
+                moveDirectory: (target: DirectoryModel, into: string) => {
 
-        let manager = new TidyFoldersManager(fileSystem, organizer);
-
-        let providedPath = undefined;
-
-        t.throws(() => {
-            manager.organizeDirectory(providedPath);
-        }, "Error: path cannot be null or undefined");
-    });
-
-    o.test('it throws Error if null path', t => {
-        t.plan(1);
-
-        let fileSystem = <IFileSystem>{};
-        let organizer = new SimpleOrganizerBuilder().build();
-
-        let manager = new TidyFoldersManager(fileSystem, organizer);
-
-        let providedPath = null;
-
-        t.throws(() => {
-            manager.organizeDirectory(providedPath);
-        }, "Error: path cannot be null or undefined");
-    });
-
-    o.test('it gets directories from injected file system', t => {
-        t.plan(1);
-
-        let fileSystem = <IFileSystem>{
-            getAllDirectories: () => {
-                t.pass('called getAllDirectories');
-                return [];
-            },
-            moveDirectory: (target: DirectoryModel, into: string) => {
-
-            }
-        };
-        let organizer = new SimpleOrganizerBuilder().build();
-
-        let manager = new TidyFoldersManager(fileSystem, organizer);
-
-        manager.organizeDirectory('/');
-        t.end();
-    });
-
-    o.test('it gets directories from injected file system for path /', t => {
-        t.plan(1);
-
-        let providedPath = '/';
-
-        let fileSystem = <IFileSystem>{
-            getAllDirectories: (path: string) => {
-                if (path === providedPath) {
-                    t.pass('called getAllDirectories with correct path');
                 }
-                return [];
-            },
-            moveDirectory: (target: DirectoryModel, into: string) => {
+            };
+            let organizer = new SimpleOrganizerBuilder().build();
 
-            }
-        };
-        let organizer = new SimpleOrganizerBuilder().build();
+            let manager = new TidyFoldersManager(fileSystem, organizer);
 
-        let manager = new TidyFoldersManager(fileSystem, organizer);
+            manager.organizeDirectory('/');
+            t.end();
+        });
 
-        manager.organizeDirectory(providedPath);
-        t.end();
-    });
+        o.test('it gets directories from injected file system for path /', t => {
+            t.plan(1);
 
-    o.test('it gets directories from injected file system for path /some-directory/', t => {
-        t.plan(1);
+            let providedPath = '/';
 
-        let providedPath = '/some-directory/';
+            let fileSystem = <IFileSystem>{
+                getAllDirectories: (path: string) => {
+                    if (path === providedPath) {
+                        t.pass('called getAllDirectories with correct path');
+                    }
+                    return [];
+                },
+                moveDirectory: (target: DirectoryModel, into: string) => {
 
-        let fileSystem = <IFileSystem>{
-            getAllDirectories: (path: string) => {
-                if (path === providedPath) {
-                    t.pass('called getAllDirectories with correct path');
                 }
-                return [];
-            },
-            moveDirectory: (target: DirectoryModel, into: string) => {
+            };
+            let organizer = new SimpleOrganizerBuilder().build();
 
+            let manager = new TidyFoldersManager(fileSystem, organizer);
+
+            manager.organizeDirectory(providedPath);
+            t.end();
+        });
+
+        o.test('it gets directories from injected file system for path /some-directory/', t => {
+            t.plan(1);
+
+            let providedPath = '/some-directory/';
+
+            let fileSystem = <IFileSystem>{
+                getAllDirectories: (path: string) => {
+                    if (path === providedPath) {
+                        t.pass('called getAllDirectories with correct path');
+                    }
+                    return [];
+                },
+                moveDirectory: (target: DirectoryModel, into: string) => {
+
+                }
+            };
+            let organizer = new SimpleOrganizerBuilder().build();
+
+            let manager = new TidyFoldersManager(fileSystem, organizer);
+
+            manager.organizeDirectory(providedPath);
+            t.end();
+        });
+
+        o.test('it passes first DirectoryModel into organizer', t => {
+            t.plan(1);
+
+            let firstModel = new DirectoryModel('firstModelName');
+            let secondModel = new DirectoryModel('secondModelName');
+
+            let fileSystem = <IFileSystem>{
+                getAllDirectories: () => {
+                    return [ firstModel, secondModel ];
+                },
+                moveDirectory: (target: DirectoryModel, into: string) => {
+
+                }
+            };
+            let organizer = new SimpleOrganizerBuilder().build();
+            organizer.getContainingDirectory = (model: DirectoryModel) => {
+                if (model === firstModel) {
+                    t.pass('organizer called with first model');
+                }
+                return '';
             }
-        };
-        let organizer = new SimpleOrganizerBuilder().build();
 
-        let manager = new TidyFoldersManager(fileSystem, organizer);
+            let manager = new TidyFoldersManager(fileSystem, organizer);
 
-        manager.organizeDirectory(providedPath);
-        t.end();
-    });
+            manager.organizeDirectory('');
+            t.end();
+        });
 
-    o.test('it passes first DirectoryModel into organizer', t => {
-        t.plan(1);
+        o.test('it passes second DirectoryModel into organizer', t => {
+            t.plan(1);
 
-        let firstModel = new DirectoryModel('firstModelName');
-        let secondModel = new DirectoryModel('secondModelName');
+            let firstModel = new DirectoryModel('firstModelName');
+            let secondModel = new DirectoryModel('secondModelName');
 
-        let fileSystem = <IFileSystem>{
-            getAllDirectories: () => {
-                return [ firstModel, secondModel ];
-            },
-            moveDirectory: (target: DirectoryModel, into: string) => {
+            let fileSystem = <IFileSystem>{
+                getAllDirectories: () => {
+                    return [ firstModel, secondModel ];
+                },
+                moveDirectory: (target: DirectoryModel, into: string) => {
 
+                }
+            };
+            let organizer = new SimpleOrganizerBuilder().build();
+            organizer.getContainingDirectory = (model: DirectoryModel) => {
+                if (model === secondModel) {
+                    t.pass('organizer called with second model');
+                }
+                return '';
             }
-        };
-        let organizer = new SimpleOrganizerBuilder().build();
-        organizer.getContainingDirectory = (model: DirectoryModel) => {
-            if (model === firstModel) {
-                t.pass('organizer called with first model');
-            }
-            return '';
-        }
 
-        let manager = new TidyFoldersManager(fileSystem, organizer);
+            let manager = new TidyFoldersManager(fileSystem, organizer);
 
-        manager.organizeDirectory('');
-        t.end();
-    });
+            manager.organizeDirectory('');
+            t.end();
+        });
 
-    o.test('it passes second DirectoryModel into organizer', t => {
-        t.plan(1);
+        o.test('it moves a directory', t => {
+            t.plan(1);
 
-        let firstModel = new DirectoryModel('firstModelName');
-        let secondModel = new DirectoryModel('secondModelName');
+            let firstModel = new DirectoryModel('firstModelName');
+            let secondModel = new DirectoryModel('secondModelName');
 
-        let fileSystem = <IFileSystem>{
-            getAllDirectories: () => {
-                return [ firstModel, secondModel ];
-            },
-            moveDirectory: (target: DirectoryModel, into: string) => {
+            let fileSystem = <IFileSystem>{
+                getAllDirectories: () => {
+                    return [ firstModel, secondModel ];
+                },
+                moveDirectory: (target: DirectoryModel, into: string) => {
+                    t.pass('moveDirectory called');
+                }
+            };
+            let organizer = new SimpleOrganizerBuilder().build();
 
-            }
-        };
-        let organizer = new SimpleOrganizerBuilder().build();
-        organizer.getContainingDirectory = (model: DirectoryModel) => {
-            if (model === secondModel) {
-                t.pass('organizer called with second model');
-            }
-            return '';
-        }
+            let manager = new TidyFoldersManager(fileSystem, organizer);
 
-        let manager = new TidyFoldersManager(fileSystem, organizer);
+            manager.organizeDirectory('');
+            t.end();
+        });
 
-        manager.organizeDirectory('');
-        t.end();
     });
 
 });
