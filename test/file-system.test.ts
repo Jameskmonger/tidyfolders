@@ -4,6 +4,7 @@ import { DirectoryModel } from 'tidyfolders/directory-model';
 
 import * as test from 'tape';
 import * as proxyquire from 'proxyquire';
+import { DirectoryModelBuilder } from './_builders/directory-model.builder';
 
 test('FileSystem', p => {
 
@@ -31,6 +32,25 @@ test('FileSystem', p => {
             t.throws(() => {
                 new FileSystem(moveDir)
             }, "Error: Dependency 'moveDir' was null or undefined.");
+        });
+
+    });
+
+    p.test('moveDirectory', c => {
+
+        let FileSystem = require('tidyfolders/file-system').FileSystem;
+
+        c.test('should call into injected moveDir function', t => {
+            t.plan(1);
+
+            let moveDir = (target: string, into: string) => {
+                t.pass('moveDir called');
+            };
+
+            let model = new DirectoryModelBuilder().withName('model').build();
+            let fileSystem = new FileSystem(moveDir);
+
+            fileSystem.moveDirectory(model, 'm');
         });
 
     });
