@@ -8,3 +8,5 @@ var Manager = require('./src/tidyfolders-manager').TidyFoldersManager;
 var fileSystem = new FileSystem(moveDir);
 var organizer = new SimpleOrganizer();
 var manager = new Manager(fileSystem, organizer);
+
+console.log(process.cwd());
