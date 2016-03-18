@@ -7,6 +7,22 @@ import * as proxyquire from 'proxyquire';
 
 test('FileSystem', p => {
 
+    p.test('constructor', c => {
+
+        let FileSystem = require('tidyfolders/file-system').FileSystem;
+
+        c.test('should throw exception if moveDir is null', t => {
+            t.plan(1);
+
+            let moveDir = null;
+
+            t.throws(() => {
+                new FileSystem(moveDir)
+            }, "Error: Dependency 'moveDir' was null or undefined.");
+        });
+
+    });
+
     p.test('getAllDirectories', o => {
 
         o.test('should call fs.readdirSync for path /', t => {
