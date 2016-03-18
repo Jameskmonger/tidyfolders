@@ -14,6 +14,10 @@ export class FileSystem implements IFileSystem {
         }
     }
 
+    public moveDirectory(directory: DirectoryModel, containingFolder: string): void {
+        
+    }
+
     public getAllDirectories(path: string): Array<DirectoryModel> {
         let files = NodeFSLibrary.readdirSync(path);
 
