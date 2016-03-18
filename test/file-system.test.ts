@@ -21,6 +21,16 @@ test('FileSystem', p => {
             }, "Error: Dependency 'moveDir' was null or undefined.");
         });
 
+        c.test('should throw exception if moveDir is undefined', t => {
+            t.plan(1);
+
+            let moveDir = undefined;
+
+            t.throws(() => {
+                new FileSystem(moveDir)
+            }, "Error: Dependency 'moveDir' was null or undefined.");
+        });
+
     });
 
     p.test('getAllDirectories', o => {
