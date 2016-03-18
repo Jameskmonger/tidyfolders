@@ -1,0 +1,5 @@
+*.ts
+test
+scripts
+typings
+typings.json
