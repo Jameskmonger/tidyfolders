@@ -26,5 +26,8 @@
     "proxyquire": "^1.7.4",
     "simple-spy": "^1.0.3",
     "tape": "^4.5.1"
+  },
+  "dependencies": {
+    "fs-movedir": "^1.0.1"
   }
 }
