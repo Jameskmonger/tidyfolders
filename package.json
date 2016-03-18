@@ -1,7 +1,7 @@
 {
   "name": "tidyfolders",
   "version": "0.0.2",
-  "description": "",
+  "description": "Tidy your folders with ease.",
   "main": "index.js",
   "scripts": {
     "build-all": "tsc -p src && tsc -p test",
