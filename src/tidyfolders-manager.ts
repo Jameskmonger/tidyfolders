@@ -30,6 +30,7 @@ export class TidyFoldersManager {
         let dirs = this._fileSystem.getAllDirectories(path);
         for (let dir of dirs) {
             let containingDirectory = this._organizer.getContainingDirectory(dir);
+            this._fileSystem.moveDirectory(dir, containingDirectory);
         }
     }
 
