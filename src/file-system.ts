@@ -8,6 +8,10 @@ import * as NodePathLibrary from 'path';
 
 export class FileSystem implements IFileSystem {
 
+    constructor(moveDir: (target: string, into: string) => void) {
+        
+    }
+
     public getAllDirectories(path: string): Array<DirectoryModel> {
         let files = NodeFSLibrary.readdirSync(path);
 
