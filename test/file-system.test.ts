@@ -70,6 +70,23 @@ test('FileSystem', p => {
             fileSystem.moveDirectory(model, 'm');
         });
 
+        c.test('should call into injected moveDir function with correct target when model called "anotherModel"', t => {
+            t.plan(1);
+
+            let directoryName = 'anotherModel';
+
+            let moveDir = (target: string, into: string) => {
+                if (target === directoryName) {
+                    t.pass('moveDir called with correct target');
+                }
+            };
+
+            let model = new DirectoryModelBuilder().withName(directoryName).build();
+            let fileSystem = new FileSystem(moveDir);
+
+            fileSystem.moveDirectory(model, 'a');
+        });
+
     });
 
     p.test('getAllDirectories', o => {
