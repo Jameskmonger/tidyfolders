@@ -1,6 +1,6 @@
 {
   "name": "tidyfolders",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Tidy your folders with ease.",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "symlink": "node ./scripts/link.js"
   },
   "bin": {
-    "tidyfolders": "index.js"  
+    "tidyfolders": "index.js"
   },
   "repository": {
     "type": "git",
