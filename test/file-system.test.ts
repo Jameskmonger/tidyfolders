@@ -104,6 +104,23 @@ test('FileSystem', p => {
             fileSystem.moveDirectory(model, containingFolder);
         });
 
+        c.test('should call into injected moveDir function with correct into when told to move into "z"', t => {
+            t.plan(1);
+
+            let containingFolder = 'z';
+
+            let moveDir = (target: string, into: string) => {
+                if (into === containingFolder) {
+                    t.pass('moveDir called with correct containing folder');
+                }
+            };
+
+            let model = new DirectoryModelBuilder().withName('test-model').build();
+            let fileSystem = new FileSystem(moveDir);
+
+            fileSystem.moveDirectory(model, containingFolder);
+        });
+
     });
 
     p.test('getAllDirectories', o => {
