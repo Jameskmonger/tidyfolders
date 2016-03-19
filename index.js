@@ -9,4 +9,6 @@ var fileSystem = new FileSystem(moveDir);
 var organizer = new SimpleOrganizer();
 var manager = new Manager(fileSystem, organizer);
 
-manager.organizeDirectory(process.cwd());
+manager.organizeDirectory(process.cwd(), function() {
+    console.log('Folder tidying complete!');
+});
