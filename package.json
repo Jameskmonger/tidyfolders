@@ -26,6 +26,7 @@
   "devDependencies": {
     "colortape": "^0.1.1",
     "fs-symlink": "^1.2.1",
+    "modulink": "^1.0.0",
     "proxyquire": "^1.7.4",
     "simple-spy": "^1.0.3",
     "tape": "^4.5.1"
