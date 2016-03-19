@@ -1,6 +1,6 @@
 {
   "name": "tidyfolders",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tidy your folders with ease.",
   "main": "index.js",
   "scripts": {
