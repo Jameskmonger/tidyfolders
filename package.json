@@ -7,7 +7,7 @@
     "build-all": "tsc -p src && tsc -p test",
     "run-test": "./node_modules/.bin/tape test/**/*.test.js | ./node_modules/.bin/colortape",
     "test": "npm run symlink && npm run build-all && npm run run-test",
-    "symlink": "node ./scripts/link.js"
+    "symlink": "node ./node_modules/.bin/modulink --name=tidyfolders"
   },
   "bin": {
     "tidyfolders": "index.js"
