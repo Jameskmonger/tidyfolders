@@ -328,6 +328,28 @@ test('TidyFoldersManager', p => {
             t.end();
         });
 
+        o.test('it does not move directory if it is a containing directory (called "a")', t => {
+            t.plan(0);
+
+            let organizerReturn = 'a';
+
+            let fileSystem = <IFileSystem>{
+                getAllDirectories: () => {
+                    return [ new DirectoryModel(organizerReturn) ];
+                },
+                moveDirectory: (target: DirectoryModel, into: string) => {
+                    t.fail('moveDirectory should not have been called');
+                }
+            };
+            let organizer = new SimpleOrganizerBuilder().build();
+            organizer.getContainingDirectory = (model: DirectoryModel) => organizerReturn;
+
+            let manager = new TidyFoldersManager(fileSystem, organizer);
+
+            manager.organizeDirectory('');
+            t.end();
+        });
+
     });
 
 });
