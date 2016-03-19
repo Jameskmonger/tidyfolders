@@ -37,6 +37,8 @@ export class TidyFoldersManager {
 
             this._fileSystem.moveDirectory(dir, containingDirectory);
         }
+
+        callback();
     }
 
 }
