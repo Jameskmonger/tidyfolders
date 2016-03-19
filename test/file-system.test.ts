@@ -12,7 +12,7 @@ test('FileSystem', p => {
 
     p.test('constructor', c => {
 
-        let FileSystem = require('tidyfolders/file-system').FileSystem;
+        let FileSystem = require('tidyfolders/src/file-system').FileSystem;
 
         c.test('should throw exception if moveDir is null', t => {
             t.plan(1);
@@ -38,7 +38,7 @@ test('FileSystem', p => {
 
     p.test('moveDirectory', c => {
 
-        let FileSystem = require('tidyfolders/file-system').FileSystem;
+        let FileSystem = require('tidyfolders/src/file-system').FileSystem;
 
         c.test('should call into injected moveDir function', t => {
             t.plan(1);
@@ -137,7 +137,7 @@ test('FileSystem', p => {
                 }
             };
 
-            let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+            let FileSystem = proxyquire('tidyfolders/src/file-system', {'fs': nodeFsStub}).FileSystem;
 
             let fileSystem = new FileSystem(moveDirStub);
             fileSystem.getAllDirectories(givenDirectory);
@@ -157,7 +157,7 @@ test('FileSystem', p => {
                 }
             };
 
-            let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+            let FileSystem = proxyquire('tidyfolders/src/file-system', {'fs': nodeFsStub}).FileSystem;
 
             let fileSystem = new FileSystem(moveDirStub);
             fileSystem.getAllDirectories(givenDirectory);
@@ -177,7 +177,7 @@ test('FileSystem', p => {
                 }
             };
 
-            let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+            let FileSystem = proxyquire('tidyfolders/src/file-system', {'fs': nodeFsStub}).FileSystem;
 
             let fileSystem = new FileSystem(moveDirStub);
             fileSystem.getAllDirectories(givenDirectory);
@@ -197,7 +197,7 @@ test('FileSystem', p => {
                 }
             };
 
-            let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+            let FileSystem = proxyquire('tidyfolders/src/file-system', {'fs': nodeFsStub}).FileSystem;
 
             let fileSystem = new FileSystem(moveDirStub);
             fileSystem.getAllDirectories(givenDirectory);
@@ -217,7 +217,7 @@ test('FileSystem', p => {
                 }
             };
 
-            let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+            let FileSystem = proxyquire('tidyfolders/src/file-system', {'fs': nodeFsStub}).FileSystem;
 
             let fileSystem = new FileSystem(moveDirStub);
             fileSystem.getAllDirectories('/');
@@ -240,7 +240,7 @@ test('FileSystem', p => {
                 }
             };
 
-            let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+            let FileSystem = proxyquire('tidyfolders/src/file-system', {'fs': nodeFsStub}).FileSystem;
 
             let fileSystem = new FileSystem(moveDirStub);
             let returnedDirectories: Array<DirectoryModel> = fileSystem.getAllDirectories('');
@@ -273,7 +273,7 @@ test('FileSystem', p => {
                 }
             };
 
-            let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+            let FileSystem = proxyquire('tidyfolders/src/file-system', {'fs': nodeFsStub}).FileSystem;
 
             let fileSystem = new FileSystem(moveDirStub);
             fileSystem.getAllDirectories(basePath);
@@ -302,7 +302,7 @@ test('FileSystem', p => {
                 }
             };
 
-            let FileSystem = proxyquire('tidyfolders/file-system', {'fs': nodeFsStub}).FileSystem;
+            let FileSystem = proxyquire('tidyfolders/src/file-system', {'fs': nodeFsStub}).FileSystem;
 
             let fileSystem = new FileSystem(moveDirStub);
             fileSystem.getAllDirectories(basePath);
