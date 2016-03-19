@@ -1,5 +1,7 @@
 # tidyfolders
 
+[![npm version](https://badge.fury.io/js/tidyfolders.svg)](https://badge.fury.io/js/tidyfolders)
+
 The simple way to tidy up a folder of folders.
 
 ![demo image](http://i.imgur.com/i54rjjK.gif)
