@@ -438,6 +438,27 @@ test('TidyFoldersManager', p => {
             t.end();
         });
 
+        o.test('it should call the callback when there are three models', t => {
+            t.plan(1);
+
+            let fileSystem = <IFileSystem>{
+                getAllDirectories: () => {
+                    return [ new DirectoryModel('1'), new DirectoryModel('1'), new DirectoryModel('3') ];
+                },
+                moveDirectory: (target: DirectoryModel, into: string) => {
+
+                }
+            };
+            let organizer = new SimpleOrganizerBuilder().build();
+
+            let manager = new TidyFoldersManager(fileSystem, organizer);
+
+            manager.organizeDirectory('', () => {
+                t.pass('callback called');
+            });
+            t.end();
+        });
+
     });
 
 });
