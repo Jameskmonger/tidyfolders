@@ -422,7 +422,7 @@ test('TidyFoldersManager', p => {
 
             let fileSystem = <IFileSystem>{
                 getAllDirectories: () => {
-                    return [ new DirectoryModel('') ];
+                    return [ new DirectoryModel('a') ];
                 },
                 moveDirectory: (target: DirectoryModel, into: string) => {
 
