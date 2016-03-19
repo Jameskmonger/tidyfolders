@@ -396,6 +396,27 @@ test('TidyFoldersManager', p => {
             t.end();
         });
 
+        o.test('it should call the callback', t => {
+            t.plan(1);
+
+            let fileSystem = <IFileSystem>{
+                getAllDirectories: () => {
+                    return [ ];
+                },
+                moveDirectory: (target: DirectoryModel, into: string) => {
+
+                }
+            };
+            let organizer = new SimpleOrganizerBuilder().build();
+
+            let manager = new TidyFoldersManager(fileSystem, organizer);
+
+            manager.organizeDirectory('', () => {
+                t.pass('callback called');
+            });
+            t.end();
+        });
+
     });
 
 });
