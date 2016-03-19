@@ -22,7 +22,7 @@ export class TidyFoldersManager {
         this._organizer = organizer;
     }
 
-    public organizeDirectory(path: string): void {
+    public organizeDirectory(path: string, callback: () => void): void {
         if (path === null || path === undefined) {
             throw Error("path cannot be null or undefined.");
         }
@@ -34,7 +34,7 @@ export class TidyFoldersManager {
             if (containingDirectory === dir.getName()) {
                 continue;
             }
-            
+
             this._fileSystem.moveDirectory(dir, containingDirectory);
         }
     }
