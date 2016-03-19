@@ -1,6 +1,6 @@
 ///<reference path="../typings/main.d.ts"/>
 
-import { DirectoryModel } from 'tidyfolders/directory-model';
+import { DirectoryModel } from 'tidyfolders/src/directory-model';
 
 import * as test from 'tape';
 import * as proxyquire from 'proxyquire';

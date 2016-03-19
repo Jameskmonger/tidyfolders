@@ -1,6 +1,6 @@
 ///<reference path="../typings/main.d.ts"/>
 
-import { DirectoryModel } from 'tidyfolders/directory-model';
+import { DirectoryModel } from 'tidyfolders/src/directory-model';
 
 import * as test from 'tape';
 
@@ -36,7 +36,7 @@ test('stores name \'Samantha\' from constructor', t => {
 
 test('stores name \'Toby\' from constructor', t => {
     t.plan(1);
-    
+
     let providedName = 'Toby';
 
     let model = new DirectoryModel(providedName);

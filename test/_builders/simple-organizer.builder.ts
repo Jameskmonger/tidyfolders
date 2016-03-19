@@ -1,5 +1,5 @@
 import { IBuilder } from './_interfaces/builder.i';
-import { SimpleOrganizer } from 'tidyfolders/simple-organizer';
+import { SimpleOrganizer } from 'tidyfolders/src/simple-organizer';
 
 export class SimpleOrganizerBuilder implements IBuilder<SimpleOrganizer> {
 

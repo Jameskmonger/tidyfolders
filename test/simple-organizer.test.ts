@@ -1,6 +1,6 @@
 ///<reference path="../typings/main.d.ts"/>
 
-import { SimpleOrganizer } from 'tidyfolders/simple-organizer';
+import { SimpleOrganizer } from 'tidyfolders/src/simple-organizer';
 
 import * as test from 'tape';
 import { DirectoryModelBuilder } from './_builders/directory-model.builder';

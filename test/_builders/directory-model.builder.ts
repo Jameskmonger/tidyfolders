@@ -1,5 +1,5 @@
 import { IBuilder } from './_interfaces/builder.i';
-import { DirectoryModel } from 'tidyfolders/directory-model';
+import { DirectoryModel } from 'tidyfolders/src/directory-model';
 
 export class DirectoryModelBuilder implements IBuilder<DirectoryModel> {
 
