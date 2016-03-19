@@ -396,7 +396,7 @@ test('TidyFoldersManager', p => {
             t.end();
         });
 
-        o.test('it should call the callback', t => {
+        o.test('it should call the callback when there are no models', t => {
             t.plan(1);
 
             let fileSystem = <IFileSystem>{
