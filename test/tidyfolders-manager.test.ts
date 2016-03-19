@@ -59,6 +59,8 @@ test('TidyFoldersManager', p => {
 
     p.test('organizeDirectory', o => {
 
+        let callbackStub = () => {};
+
         o.test('it throws Error if undefined path', t => {
             t.plan(1);
 
@@ -70,7 +72,7 @@ test('TidyFoldersManager', p => {
             let providedPath = undefined;
 
             t.throws(() => {
-                manager.organizeDirectory(providedPath);
+                manager.organizeDirectory(providedPath, callbackStub);
             }, "Error: path cannot be null or undefined");
         });
 
@@ -85,7 +87,7 @@ test('TidyFoldersManager', p => {
             let providedPath = null;
 
             t.throws(() => {
-                manager.organizeDirectory(providedPath);
+                manager.organizeDirectory(providedPath, callbackStub);
             }, "Error: path cannot be null or undefined");
         });
 
@@ -105,7 +107,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory('/');
+            manager.organizeDirectory('/', callbackStub);
             t.end();
         });
 
@@ -129,7 +131,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory(providedPath);
+            manager.organizeDirectory(providedPath, callbackStub);
             t.end();
         });
 
@@ -153,7 +155,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory(providedPath);
+            manager.organizeDirectory(providedPath, callbackStub);
             t.end();
         });
 
@@ -181,7 +183,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory('');
+            manager.organizeDirectory('', callbackStub);
             t.end();
         });
 
@@ -209,7 +211,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory('');
+            manager.organizeDirectory('', callbackStub);
             t.end();
         });
 
@@ -228,7 +230,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory('');
+            manager.organizeDirectory('', callbackStub);
             t.end();
         });
 
@@ -252,7 +254,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory('');
+            manager.organizeDirectory('', callbackStub);
             t.end();
         });
 
@@ -276,7 +278,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory('');
+            manager.organizeDirectory('', callbackStub);
             t.end();
         });
 
@@ -300,7 +302,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory('');
+            manager.organizeDirectory('', callbackStub);
             t.end();
         });
 
@@ -324,7 +326,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory('');
+            manager.organizeDirectory('', callbackStub);
             t.end();
         });
 
@@ -346,7 +348,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory('');
+            manager.organizeDirectory('', callbackStub);
             t.end();
         });
 
@@ -368,7 +370,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory('');
+            manager.organizeDirectory('', callbackStub);
             t.end();
         });
 
@@ -390,7 +392,7 @@ test('TidyFoldersManager', p => {
 
             let manager = new TidyFoldersManager(fileSystem, organizer);
 
-            manager.organizeDirectory('');
+            manager.organizeDirectory('', callbackStub);
             t.end();
         });
 
